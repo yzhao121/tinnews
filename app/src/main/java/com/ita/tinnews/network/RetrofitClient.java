@@ -15,7 +15,7 @@ public class RetrofitClient {
     private static final String API_KEY = "1fba7a449b5f487893099d9be1f44e42";
     private static final String BASE_URL = "https://newsapi.org/v2/";
 
-    public static Retrofit newInstance(Context context) {
+    public static Retrofit newInstance() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new HeaderInterceptor())
                 .build();

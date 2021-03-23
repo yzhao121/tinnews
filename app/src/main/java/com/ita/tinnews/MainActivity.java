@@ -37,28 +37,28 @@ public class MainActivity extends AppCompatActivity {
                 .findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(navView, navController);
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        NavigationUI.setupActionBarWithNavController(this, navController); // bind the actionbar with navController
 
-        NewsApi api = RetrofitClient.newInstance(this)
-                .create(NewsApi.class);
-        api.getTopHeadlines("US")
-                .enqueue(new Callback<NewsResponse>() {
-                    @Override
-                    public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                        // response return error
-                        if (response.isSuccessful()) {
-                            Log.d("getTopHeadlines", response.body().toString());
-                        } else {
-                            Log.d("getTopHeadlines", response.toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<NewsResponse> call, Throwable t) {
-                        // request send error
-                        Log.d("getTopHeadlines", t.toString());
-                    }
-                });
+//        NewsApi api = RetrofitClient.newInstance(this)
+//                .create(NewsApi.class);
+//        api.getTopHeadlines("US")
+//                .enqueue(new Callback<NewsResponse>() {
+//                    @Override
+//                    public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+//                        // response return error
+//                        if (response.isSuccessful()) {
+//                            Log.d("getTopHeadlines", response.body().toString());
+//                        } else {
+//                            Log.d("getTopHeadlines", response.toString());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<NewsResponse> call, Throwable t) {
+//                        // request send error
+//                        Log.d("getTopHeadlines", t.toString());
+//                    }
+//                });
     }
 
     @Override
