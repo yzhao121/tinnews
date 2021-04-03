@@ -13,6 +13,8 @@ import com.ita.tinnews.model.NewsResponse;
 import com.ita.tinnews.network.NewsApi;
 import com.ita.tinnews.network.RetrofitClient;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,6 +26,14 @@ public class NewsRepository {
     public NewsRepository(Context context) {
         newsApi = RetrofitClient.newInstance().create(NewsApi.class);
         database = ((TinNewsApplication) context.getApplicationContext()).getDatabase();
+    }
+
+    public LiveData<List<Article>> getAllSavedArticles() {
+        return database.articleDao().getAllArticles();
+    }
+
+    public void deleteSavedArticle(Article article) {
+        AsyncTask.execute(() -> database.articleDao().deleteArticle(article));
     }
 
     public LiveData<NewsResponse> getTopHeadlines(String country) {
